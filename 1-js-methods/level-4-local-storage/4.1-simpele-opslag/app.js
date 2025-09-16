@@ -5,7 +5,7 @@ function slaOpNaam() {
     console.log('slaOpNaam() aangeroepen');
     
     // TODO: Haal naam uit input veld
-    const naam = document.getElementById('naam-input')
+    const naam = document.getElementById('naam-input').value;
     
     // TODO: Check of naam niet leeg is
     if (naam === '') {
