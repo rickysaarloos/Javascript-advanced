@@ -41,7 +41,19 @@ const students = [
   },
 ];
 
-// function toonAlleStudenten() {
+function toonAlleStudenten() { 
+const studentenLijst = document.getElementById('studenten-lijst');
+
+studentenLijst.innerHTML = students.map(student => 
+  `<article class="${student.actief ? 'actief' : 'inactief'}">
+    <strong>${student.naam}</strong> (${student.leeftijd} jaar)<br>
+    📚 ${student.studie}<br>
+    📊 Cijfer: ${student.cijfer} | Status: ${student.actief ? '✅ Actief' : '❌ Inactief'}
+  </article>`
+).join('');
+}
+ 
+toonAlleStudenten();  
 //   // 📝 WAT MOET JE DOEN:
 //   // 1. Loop door de hele 'students' array
 //   // 2. Maak voor elke student een HTML article element
@@ -55,17 +67,40 @@ const students = [
 //   //     📚 Frontend Development<br>
 //   //     📊 Cijfer: 8.5 | Status: ✅ Actief
 //   // </article>
-// }
+// 
 
 function toonActieveStudenten() {
+  const studentenLijst = document.getElementById('studenten-lijst');
+
+  studentenLijst.innerHTML = students
+    .filter(student => student.actief === true)
+    .map(student => 
+      `<article class="${student.actief ? 'actief' : 'inactief'}">
+        <strong>${student.naam}</strong> (${student.leeftijd} jaar)<br>
+        📚 ${student.studie}<br>
+        📊 Cijfer: ${student.cijfer} | Status: ${student.actief ? '✅ Actief' : '❌ Inactief'}
+      </article>`
+    ).join('');
+}
   // 📝 WAT MOET JE DOEN:
   // 1. Filter de students array op studenten waar actief === true
   // 2. Toon alleen die gefilterde studenten (gebruik dezelfde HTML als hierboven)
   //
   // 💡 TIP: Gebruik array.filter() en dan dezelfde logica als toonAlleStudenten()
-}
+
 
 function toonTopStudenten() {
+  const studentenLijst = document.getElementById('studenten-lijst');
+
+  studentenLijst.innerHTML = students
+    .filter(student => student.cijfer >= 8.0)
+    .map(student => 
+      `<article class="${student.actief ? 'actief' : 'inactief'}">
+        <strong>${student.naam}</strong> (${student.leeftijd} jaar)<br>
+        📚 ${student.studie}<br>
+        📊 Cijfer: ${student.cijfer} | Status: ${student.actief ? '✅ Actief' : '❌ Inactief'}
+      </article>`
+    ).join('');
   // 📝 WAT MOET JE DOEN:
   // 1. Filter de students array op studenten met cijfer >= 8.0
   // 2. Toon alleen die gefilterde studenten
@@ -74,4 +109,7 @@ function toonTopStudenten() {
 }
 
 // 🚀 START DE APPLICATIE - roep deze aan als de pagina laadt
-toonAlleStudenten();
+document.addEventListener('DOMContentLoaded', function() {
+  toonAlleStudenten();
+}); 
+
